@@ -1,0 +1,28 @@
+{
+  "name": "leinwand",
+  "version": "0.0.0",
+  "description": "Method chaining for the canvas 2d api",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js",
+    "test-coveralls": "istanbul cover test/test.js  && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "jshint": "jshint test/* lib/*",
+    "test-beefy": "beefy test/beefy.js -v",
+    "test-beefy-live": "beefy test/beefy.js -v --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tillarnold/leinwand"
+  },
+  "keywords": [],
+  "author": "Till Arnold",
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "^2.5.3",
+    "tape": "^3.0.0",
+    "istanbul": "~0.3.0",
+    "coveralls": "~2.11.1",
+    "beefy": "^2.1.1",
+    "watchify": "^2.1.0"
+  }
+}
