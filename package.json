@@ -8,7 +8,8 @@
     "test-coveralls": "istanbul cover test/test.js  && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "jshint": "jshint test/* lib/*",
     "test-beefy": "beefy test/beefy.js -v",
-    "test-beefy-live": "beefy test/beefy.js -v --live"
+    "test-beefy-live": "beefy test/beefy.js -v --live",
+    "coverage": "rm -rf coverage && istanbul cover test/test.js && istanbul report html && serve coverage"
   },
   "repository": {
     "type": "git",
