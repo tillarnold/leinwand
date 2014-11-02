@@ -1,6 +1,6 @@
 {
   "name": "leinwand",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Method chaining for the canvas 2d api",
   "main": "index.js",
   "scripts": {
