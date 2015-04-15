@@ -13,6 +13,7 @@ var methodNames = [
   'ellipse',
   'fill',
   'fillRect',
+  'fillText',
   'lineTo',
   'moveTo',
   'quadraticCurveTo',
@@ -24,7 +25,6 @@ var methodNames = [
   'scale',
   'stroke',
   'strokeRect',
-  'strokeText',
   'strokeText',
   'transform',
   'translate'
