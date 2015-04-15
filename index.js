@@ -41,7 +41,7 @@ var setterNames = [
   'lineWidth',
   'strokeStyle',
   'textAlign',
-  'textBaseLine'
+  'textBaseline'
 ];
 
 
