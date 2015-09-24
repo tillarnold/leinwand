@@ -9,4 +9,5 @@ Method chaining for the canvas 2d api
 
 
 ## Release History
+* 2015-09-24   v0.2.0   small bug fixes
 * 2014-11-02   v0.1.0   Initial version.
