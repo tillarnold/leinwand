@@ -24,4 +24,7 @@ l
   .fillStyle('blue')
   .circle(50,50,40)
   .fill()
-  .stroke();
+  .stroke()
+  .fillRect(200,200,100,100)
+  .rotateContextAt(250,250,Math.PI/4)
+  .fillRect(200,200,100,100);

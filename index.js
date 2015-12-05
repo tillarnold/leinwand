@@ -23,6 +23,7 @@ var methodNames = [
   'rotate',
   'save',
   'scale',
+  'setTransform',
   'stroke',
   'strokeRect',
   'strokeText',
@@ -76,6 +77,31 @@ Leinwand.prototype.clear = function clear() {
 
 Leinwand.prototype.circle = function cirlce(x, y, r) {
   this._ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  return this;
+};
+
+Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
+  this.translate(x, y);
+	this.rotate(r);
+	this.translate(-1 * x, -1 * y);
+  return this;
+};
+
+Leinwand.prototype.resetCanvas = function resetCanvas(){
+  this._canvas.width = this._canvas.width;
+  return this;
+};
+
+Leinwand.prototype.resetTransforms = function resetTransforms() {
+  this.setTransform(1, 0, 0, 1, 0, 0);
+  return this;
+};
+
+Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
+  this.save();
+  this.resetTransforms();
+  this.clear();
+  this.restore();
   return this;
 };
 

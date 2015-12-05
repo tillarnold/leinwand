@@ -19,11 +19,11 @@
   "author": "Till Arnold",
   "license": "MIT",
   "devDependencies": {
-    "jshint": "^2.8.0",
-    "tape": "^4.2.0",
-    "istanbul": "~0.3.20",
+    "jshint": "^2.9.1-rc1",
+    "tape": "^4.2.2",
+    "istanbul": "~0.4.1",
     "coveralls": "~2.11.4",
     "beefy": "^2.1.5",
-    "watchify": "^3.4.0"
+    "watchify": "^3.6.1"
   }
 }
