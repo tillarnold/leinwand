@@ -82,8 +82,8 @@ Leinwand.prototype.circle = function cirlce(x, y, r) {
 
 Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
   this.translate(x, y);
-	this.rotate(r);
-	this.translate(-1 * x, -1 * y);
+  this.rotate(r);
+  this.translate(-1 * x, -1 * y);
   return this;
 };
 
