@@ -10,6 +10,7 @@ var methodNames = [
   'closePath',
   'createLinearGradient',
   'createRadialGradient',
+  'drawImage',
   'ellipse',
   'fill',
   'fillRect',
