@@ -114,7 +114,7 @@ test('Leinwand#methods', function(t) {
 test('Leinwand#Custom methods', function(t) {
   t.plan(1);
   var mockCanvas = {};
-  var noop = () => {};
+  var noop = function(){};
   mockCanvas.getContext = function() {
     return {
       save: noop,
