@@ -116,12 +116,13 @@ test('Leinwand#Custom methods', function(t) {
   var mockCanvas = {};
   var noop = () => {};
   mockCanvas.getContext = function() {
-    return { save: noop,
+    return {
+      save: noop,
       clear: noop,
       restore: noop,
-      translate: noop ,
-      setTransform: noop ,
-      rotate: noop  ,
+      translate: noop,
+      setTransform: noop,
+      rotate: noop,
       clearRect: noop
     };
   };
@@ -129,9 +130,9 @@ test('Leinwand#Custom methods', function(t) {
   var l = leinwand(mockCanvas);
 
   t.equals(l
-      .resetCanvas()
-      .resetTransforms()
-      .rotateContextAt(10,20,30)
-      .clearWithTransforms(),l);
+    .resetCanvas()
+    .resetTransforms()
+    .rotateContextAt(10, 20, 30)
+    .clearWithTransforms(), l);
 
 });

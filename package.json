@@ -9,7 +9,8 @@
     "jshint": "jshint test/* index.js",
     "test-beefy": "beefy test/beefy.js -v",
     "test-beefy-live": "beefy test/beefy.js -v --live",
-    "coverage": "rm -rf coverage && istanbul cover test/test.js && istanbul report html && serve coverage"
+    "coverage": "rm -rf coverage && istanbul cover test/test.js && istanbul report html && serve coverage",
+    "beautify": "js-beautify -s=2 -r -f *.js test/*.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,12 @@
   "author": "Till Arnold",
   "license": "MIT",
   "devDependencies": {
+    "beefy": "^2.1.8",
+    "coveralls": "~2.11.11",
+    "istanbul": "~0.4.4",
+    "js-beautify": "^1.6.3",
     "jshint": "^2.9.2",
     "tape": "^4.6.0",
-    "istanbul": "~0.4.4",
-    "coveralls": "~2.11.11",
-    "beefy": "^2.1.8",
     "watchify": "^3.7.0"
   }
 }

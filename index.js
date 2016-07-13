@@ -86,7 +86,7 @@ Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
     .translate(-1 * x, -1 * y);
 };
 
-Leinwand.prototype.resetCanvas = function resetCanvas(){
+Leinwand.prototype.resetCanvas = function resetCanvas() {
   this._canvas.width = this._canvas.width;
   return this;
 };
