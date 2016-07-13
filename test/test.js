@@ -110,3 +110,28 @@ test('Leinwand#methods', function(t) {
     .save(2);
 
 });
+
+test('Leinwand#Custom methods', function(t) {
+  t.plan(1);
+  var mockCanvas = {};
+  var noop = () => {};
+  mockCanvas.getContext = function() {
+    return { save: noop,
+      clear: noop,
+      restore: noop,
+      translate: noop ,
+      setTransform: noop ,
+      rotate: noop  ,
+      clearRect: noop
+    };
+  };
+
+  var l = leinwand(mockCanvas);
+
+  t.equals(l
+      .resetCanvas()
+      .resetTransforms()
+      .rotateContextAt(10,20,30)
+      .clearWithTransforms(),l);
+
+});

@@ -72,20 +72,18 @@ setterNames.forEach(function(el) {
 
 //Custom methods
 Leinwand.prototype.clear = function clear() {
-  this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
-  return this;
+  return this.clearRect(0, 0, this._canvas.width, this._canvas.height);
 };
 
 Leinwand.prototype.circle = function cirlce(x, y, r) {
-  this._ctx.arc(x, y, r, 0, 2 * Math.PI, false);
-  return this;
+  return this.arc(x, y, r, 0, 2 * Math.PI, false);
 };
 
 Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
-  this.translate(x, y);
-  this.rotate(r);
-  this.translate(-1 * x, -1 * y);
-  return this;
+  return this
+    .translate(x, y)
+    .rotate(r)
+    .translate(-1 * x, -1 * y);
 };
 
 Leinwand.prototype.resetCanvas = function resetCanvas(){
@@ -94,16 +92,15 @@ Leinwand.prototype.resetCanvas = function resetCanvas(){
 };
 
 Leinwand.prototype.resetTransforms = function resetTransforms() {
-  this.setTransform(1, 0, 0, 1, 0, 0);
-  return this;
+  return this.setTransform(1, 0, 0, 1, 0, 0);
 };
 
 Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
-  this.save();
-  this.resetTransforms();
-  this.clear();
-  this.restore();
-  return this;
+  return this
+    .save()
+    .resetTransforms()
+    .clear()
+    .restore();
 };
 
 //Getters
