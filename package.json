@@ -21,10 +21,11 @@
   "license": "MIT",
   "devDependencies": {
     "beefy": "^2.1.8",
-    "coveralls": "~2.11.11",
+    "coveralls": "~3.0.0",
     "istanbul": "~0.4.4",
     "js-beautify": "^1.6.3",
     "jshint": "^2.9.2",
+    "serve": "^6.4.9",
     "tape": "^4.6.0",
     "watchify": "^3.7.0"
   }
