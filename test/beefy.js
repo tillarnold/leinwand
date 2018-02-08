@@ -27,4 +27,8 @@ l
   .stroke()
   .fillRect(200, 200, 100, 100)
   .rotateContextAt(250, 250, Math.PI / 4)
-  .fillRect(200, 200, 100, 100);
+  .fillRect(200, 200, 100, 100)
+  .resetTransforms()
+  .fillStyle('gray')
+  .font('50pt sans-serif')
+  .fillTextCenteredAt('Hello', 250, 250);
