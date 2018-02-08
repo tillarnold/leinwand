@@ -117,6 +117,21 @@ Leinwand.prototype.strokeTextCenteredAt = function strokeTextCenteredAt(text, x,
     .strokeText(text, x, y);
 };
 
+Leinwand.prototype.drawImageCenteredAt = function drawImageCenteredAt(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) {
+  var args = arguments.length;
+  if (args === 3) {
+    this.drawImage(image, sx - image.width / 2, sy - image.height / 2);
+  } else if (args === 5) {
+    this.drawImage(image, sx - sWidth / 2, sy - sHeight / 2, sWidth, sHeight);
+  } else if (args === 9) {
+    this.drawImage(image, sx, sy, sWidth, sHeight, dx - dWidth / 2, dy - dHeight / 2, dWidth, dHeight);
+  } else {
+    throw new TypeError(arguments.length + ' is not a valid number of arguments to Leinwand.drawImageCenteredAt');
+  }
+
+  return this;
+};
+
 //Getters
 Leinwand.prototype.getContext = function getContext() {
   return this._ctx;
