@@ -3,5 +3,5 @@ node_js:
   - "4.0.0"
   - "stable"
 install: npm install
-script: npm run jshint && npm run test-coveralls
+script: npm run lint && npm run test-coveralls
 sudo: false
