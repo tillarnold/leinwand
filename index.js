@@ -24,6 +24,7 @@ var methodNames = [
   'rotate',
   'save',
   'scale',
+  'setLineDash',
   'setTransform',
   'stroke',
   'strokeRect',
@@ -39,8 +40,10 @@ var setterNames = [
   'globalAlpha',
   'globalCompositeOperation',
   'lineCap',
+  'lineDashOffset',
   'lineJoin',
   'lineWidth',
+  'miterLimit',
   'strokeStyle',
   'textAlign',
   'textBaseline'
@@ -48,7 +51,9 @@ var setterNames = [
 
 var passthroughNames = [
   'getImageData',
-  'measureText'
+  'getLineDash',
+  'measureText',
+  'putImageData'
 ];
 
 var Leinwand = function Leinwand(canvas) {
