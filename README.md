@@ -68,6 +68,9 @@ The following methods can be called exactly like the ones of `CanvasRenderingCon
 - transform
 - translate
 
+## Aliases
+`mt` is an alias for `moveTo`. `lt` is an alias for `lineTo`.
+
 ## Setters
 If you want to set the `fillStyle` of your context you'd usually have to do something like this `ctx.fillStyle = 'red'`.
 To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This works works with all of these properites:
