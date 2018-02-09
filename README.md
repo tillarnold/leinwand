@@ -5,14 +5,14 @@
 [![Coverage Status](https://img.shields.io/coveralls/tillarnold/leinwand.svg)](https://coveralls.io/r/tillarnold/leinwand?branch=master)
 
 
-Method chaining for the canvas 2d api.
+> Method chaining for the canvas 2d api.
 
-`leinwand` is a small library that wraps the canvas 2d api. It provices some helper functions as well as a chaining api for
+`leinwand` is a small library that wraps the canvas 2d api. It provides some helper functions as well as a chaining api for
 most methods that exist on `CanvasRenderingContext2D`.
 
 ## Example usage
 
-```
+```js
 let canvas = document.getElementByIf('myCanvas');
 let l = new Leinwand(canvas);
 
@@ -102,14 +102,13 @@ Clears the canvas. If you have applied any transforms to the context this may no
 Draws a path in form of a circle at `x`/`y` with a radius of `r`.
 
 ### l.rotateContextAt(x, y, r)
-Rotates the context at `x`/`y` by `r` radians
-
+Rotates the context at `x`/`y` by `r` radians.
 
 ### l.resetCanvas()
-Resets the canvas
+Resets the canvas.
 
 ### l.resetTransforms()
-Resets all the transforms
+Resets all the transforms.
 
 ### l.clearWithTransforms()
 clears the canvas event if there have been transforms applied. The tansforms are preserved.
@@ -120,16 +119,15 @@ Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 ### l.strokeRectCenteredAt(x, y, w, h)
 Strokes a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 
-
 ### l.fillTextCenteredAt(text, x, y)
-Fills the thext `text` centered at `x`/`y`
+Fills the thext `text` centered at `x`/`y`.
 
 ### l.strokeTextCenteredAt(text, x, y)
-Strokes the thext `text` centered at `x`/`y`
+Strokes the thext `text` centered at `x`/`y`.
 
-# drawImageCenteredAt
+### drawImageCenteredAt
 Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signatures.
-```
+```js
  l.drawCenteredAtImage(image, dx, dy);
  l.drawCenterdAtImage(image, dx, dy, dWidth, dHeight);
  l.drawCenteredAtImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
@@ -139,16 +137,16 @@ This does what `drawImage` does except that the image is centered at `dy`/`dy`.
 For more infor on the parameters hava a look at the [mdn aritcle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) on `drawImage`.
 
 ### l.getContext()
-get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some functionality.
+Get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some functionality.
 
 ### l.getCanvas()
-get the underlying `HTMLCanvasElement`.
+Get the underlying `HTMLCanvasElement`.
 
 ### l.getWidht()
-get the width of the canvas element.
+Get the width of the canvas element.
 
 ### l.getHeight()
-get the height of the canvas element.
+Get the height of the canvas element.
 
 ## Release History
 * 2018-02-09   v0.5.0   add more utility functions
