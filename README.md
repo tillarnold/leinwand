@@ -5,8 +5,150 @@
 [![Coverage Status](https://img.shields.io/coveralls/tillarnold/leinwand.svg)](https://coveralls.io/r/tillarnold/leinwand?branch=master)
 
 
-Method chaining for the canvas 2d api
+Method chaining for the canvas 2d api.
 
+`leinwand` is a small library that wraps the canvas 2d api. It provices some helper functions as well as a chaining api for
+most methods that exist on `CanvasRenderingContext2D`.
+
+## Example usage
+
+```
+let canvas = document.getElementByIf('myCanvas');
+let l = new Leinwand(canvas);
+
+l
+  .fillStyle('red')
+  .mt(50, 50)
+  .lt(250, 70)
+  .lt(166, 99)
+  .lt(166, 199)
+  .closePath()
+  .fill()
+  .stroke()
+  .beginPath()
+  .fillStyle('blue')
+  .circle(50, 50, 40)
+  .fill()
+  .stroke()
+
+```
+
+## Chaining methods
+
+The following methods can be called exactly like the ones of `CanvasRenderingContext2D` except that they return the `leinwand` object.
+
+- arc
+- arcTo
+- beginPath
+- bezierCurveTo
+- clearRect
+- clip
+- closePath
+- createLinearGradient
+- createRadialGradient
+- drawImage
+- ellipse
+- fill
+- fillRect
+- fillText
+- lineTo
+- moveTo
+- quadraticCurveTo
+- rect
+- resetClip
+- restore
+- rotate
+- save
+- scale
+- setLineDash
+- setTransform
+- stroke
+- strokeRect
+- strokeText
+- transform
+- translate
+
+## Setters
+If you want to set the `fillStyle` of your context you'd usually have to do something like this `ctx.fillStyle = 'red'`.
+To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This works works with all of these properites:
+
+- fillStyle
+- font
+- globalAlpha
+- globalCompositeOperation
+- lineCap
+- lineDashOffset
+- lineJoin
+- lineWidth
+- miterLimit
+- strokeStyle
+- textAlign
+- textBaseline
+
+## Passthrough methods
+There are methods on `CanvasRenderingContext2D` that do return something. So we can't chain on these methods. They behave exactly as if they were called on the context.
+
+- getImageData
+- getLineDash
+- measureText
+- putImageData
+
+## Additional methods
+
+### l.clear()
+Clears the canvas. If you have applied any transforms to the context this may not do what you want (try `clearWithTransforms`).
+
+### l.circle(x, y, r)
+Draws a path in form of a circle at `x`/`y` with a radius of `r`.
+
+### l.rotateContextAt(x, y, r)
+Rotates the context at `x`/`y` by `r` radians
+
+
+### l.resetCanvas()
+Resets the canvas
+
+### l.resetTransforms()
+Resets all the transforms
+
+### l.clearWithTransforms()
+clears the canvas event if there have been transforms applied. The tansforms are preserved.
+
+### l.fillRectCenteredAt(x, y, w, h)
+Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
+
+### l.strokeRectCenteredAt(x, y, w, h)
+Strokes a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
+
+
+### l.fillTextCenteredAt(text, x, y)
+Fills the thext `text` centered at `x`/`y`
+
+### l.strokeTextCenteredAt(text, x, y)
+Strokes the thext `text` centered at `x`/`y`
+
+# drawImageCenteredAt
+Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signatures.
+```
+ l.drawCenteredAtImage(image, dx, dy);
+ l.drawCenterdAtImage(image, dx, dy, dWidth, dHeight);
+ l.drawCenteredAtImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+```
+
+This does what `drawImage` does except that the image is centered at `dy`/`dy`.
+For more infor on the parameters hava a look at the [mdn aritcle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) on `drawImage`.
+
+### l.getContext()
+get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some functionality.
+
+### l.getCanvas()
+get the underlying `HTMLCanvasElement`.
+
+### l.getWidht()
+get the width of the canvas element.
+
+### l.getHeight()
+get the height of the canvas element.
 
 ## Release History
 * 2018-02-09   v0.5.0   add more utility functions
