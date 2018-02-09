@@ -46,6 +46,10 @@ var setterNames = [
   'textBaseline'
 ];
 
+var passthroughNames = [
+  'getImageData',
+  'measureText'
+];
 
 var Leinwand = function Leinwand(canvas) {
   if (!(this instanceof Leinwand)) {
@@ -67,6 +71,12 @@ setterNames.forEach(function(el) {
   Leinwand.prototype[el] = function(s) {
     this._ctx[el] = s;
     return this;
+  };
+});
+
+passthroughNames.forEach(function(el) {
+  Leinwand.prototype[el] = function() {
+    return this._ctx[el].apply(this._ctx, arguments);
   };
 });
 
