@@ -103,6 +103,16 @@ Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
     .restore();
 };
 
+Leinwand.prototype.fillRectCenteredAt = function fillRectCenteredAt(x, y, w, h) {
+  return this
+    .fillRect(x - w / 2, y - h / 2, w, h);
+};
+
+Leinwand.prototype.strokeRectCenteredAt = function strokeRectCenteredAt(x, y, w, h) {
+  return this
+    .strokeRect(x - w / 2, y - h / 2, w, h);
+};
+
 Leinwand.prototype.fillTextCenteredAt = function fillTextCenteredAt(text, x, y) {
   return this
     .textBaseline('middle')

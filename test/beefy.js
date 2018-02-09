@@ -37,5 +37,7 @@ img.onload = () => {
     .resetTransforms()
     .fillStyle('gray')
     .font('50pt sans-serif')
-    .fillTextCenteredAt('Hello', 250, 250);
+    .fillTextCenteredAt('Hello', 250, 250)
+    .strokeStyle('purple')
+    .strokeRectCenteredAt(250, 60, 490, 100);
 };
