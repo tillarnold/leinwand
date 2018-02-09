@@ -115,16 +115,20 @@ Leinwand.prototype.strokeRectCenteredAt = function strokeRectCenteredAt(x, y, w,
 
 Leinwand.prototype.fillTextCenteredAt = function fillTextCenteredAt(text, x, y) {
   return this
+    .save()
     .textBaseline('middle')
     .textAlign('center')
-    .fillText(text, x, y);
+    .fillText(text, x, y)
+    .restore();
 };
 
 Leinwand.prototype.strokeTextCenteredAt = function strokeTextCenteredAt(text, x, y) {
   return this
+    .save()
     .textBaseline('middle')
     .textAlign('center')
-    .strokeText(text, x, y);
+    .strokeText(text, x, y)
+    .resore();
 };
 
 Leinwand.prototype.drawImageCenteredAt = function drawImageCenteredAt(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) {
