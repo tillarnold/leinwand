@@ -13,7 +13,7 @@ most methods that exist on `CanvasRenderingContext2D`.
 ## Example usage
 
 ```js
-let canvas = document.getElementByIf('myCanvas');
+let canvas = document.getElementById('myCanvas');
 let l = new Leinwand(canvas);
 
 l
