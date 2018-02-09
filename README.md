@@ -29,7 +29,7 @@ l
   .fillStyle('blue')
   .circle(50, 50, 40)
   .fill()
-  .stroke()
+  .stroke();
 
 ```
 
