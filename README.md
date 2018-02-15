@@ -117,7 +117,7 @@ Resets the canvas.
 Resets all the transforms.
 
 ### l.clearWithTransforms()
-clears the canvas event if there have been transforms applied. The tansforms are preserved.
+Clears the canvas event if there have been transforms applied. The tansforms are preserved.
 
 ### l.fillRectCenteredAt(x, y, w, h)
 Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
@@ -126,10 +126,10 @@ Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 Strokes a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 
 ### l.fillTextCenteredAt(text, x, y)
-Fills the thext `text` centered at `x`/`y`.
+Fills the the text `text` centered at `x`/`y`.
 
 ### l.strokeTextCenteredAt(text, x, y)
-Strokes the thext `text` centered at `x`/`y`.
+Strokes the the text `text` centered at `x`/`y`.
 
 ### l.drawImageCenteredAt(...)
 Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signatures.
