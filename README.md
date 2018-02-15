@@ -90,7 +90,7 @@ This works with all of these properites:
 - textAlign
 - textBaseline
 
-Additionally this also works with `width` and `height`. So you can do `l.setHeight(400)` (or l.height(400)`) to change the height of the canvas element to 400.
+Additionally this also works with `width` and `height`. So you can do `l.setHeight(400)` (or `l.height(400)`) to change the height of the canvas element to 400.
 ## Passthrough methods
 There are methods on `CanvasRenderingContext2D` that do return something. So we can't chain on these methods. They behave exactly as if they were called on the context.
 
