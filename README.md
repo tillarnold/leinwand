@@ -71,10 +71,10 @@ The following methods can be called exactly like the ones of `CanvasRenderingCon
 ## Aliases
 `mt` is an alias for `moveTo`. `lt` is an alias for `lineTo`.
 
-## Setters
+## Setters/Getters
 If you want to set the `fillStyle` of your context you'd usually have to do something like this `ctx.fillStyle = 'red'`.
 To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This does the same as `l.setFillStyle('red')`.
-To read a property you can either use `l.getFillStyle()` or `l.fillStyle()`. 
+To read a property you can either use `l.getFillStyle()` or `l.fillStyle()`.
 This works with all of these properites:
 
 - fillStyle
@@ -90,6 +90,7 @@ This works with all of these properites:
 - textAlign
 - textBaseline
 
+Additionally this also works with `width` and `height`. So you can do `l.setHeight(400)` (or l.height(400)`) to change the height of the canvas element to 400.
 ## Passthrough methods
 There are methods on `CanvasRenderingContext2D` that do return something. So we can't chain on these methods. They behave exactly as if they were called on the context.
 
@@ -130,7 +131,7 @@ Fills the thext `text` centered at `x`/`y`.
 ### l.strokeTextCenteredAt(text, x, y)
 Strokes the thext `text` centered at `x`/`y`.
 
-### drawImageCenteredAt
+### l.drawImageCenteredAt(...)
 Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signatures.
 ```js
  l.drawCenteredAtImage(image, dx, dy);
@@ -146,12 +147,6 @@ Get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some 
 
 ### l.getCanvas()
 Get the underlying `HTMLCanvasElement`.
-
-### l.getWidht()
-Get the width of the canvas element.
-
-### l.getHeight()
-Get the height of the canvas element.
 
 ## Release History
 * 2018-02-09   v0.5.0   add more utility functions
