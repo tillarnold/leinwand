@@ -75,7 +75,7 @@ test('Leinwand#setters', function(t) {
 });
 
 test('Leinwand#getters', function(t) {
-  t.plan(4);
+  t.plan(12);
   var context = {};
   var mockCanvas = {};
   mockCanvas.getContext = function() {
@@ -89,8 +89,19 @@ test('Leinwand#getters', function(t) {
   t.equals(l.getCanvas(), mockCanvas);
   t.equals(l.getContext(), context);
   t.equals(l.getWidth(), 500);
+  t.equals(l.width(), 500);
   t.equals(l.getHeight(), 200);
+  t.equals(l.height(), 200);
 
+  l.width(1300)
+    .height(7700);
+
+  t.equals(l.getWidth(), 1300);
+  t.equals(mockCanvas.width, 1300);
+  t.equals(l.width(), 1300);
+  t.equals(l.getHeight(), 7700);
+  t.equals(l.height(), 7700);
+  t.equals(mockCanvas.height, 7700);
 });
 
 test('Leinwand#methods', function(t) {
@@ -112,6 +123,24 @@ test('Leinwand#methods', function(t) {
   l
     .lt(1)
     .save(2);
+
+});
+
+test('Leinwand#passthrough', function(t) {
+  t.plan(2);
+  var context = {};
+  context.getImageData = function(e) {
+    t.equals(e, 2);
+    return 22;
+  };
+  var mockCanvas = {};
+  mockCanvas.getContext = function() {
+    return context;
+  };
+
+  var l = leinwand(mockCanvas);
+
+  t.equals(l.getImageData(2), 22);
 
 });
 
