@@ -50,7 +50,7 @@ test('Leinwand#clear', function(t) {
 });
 
 test('Leinwand#setters', function(t) {
-  t.plan(3);
+  t.plan(6);
   var context = {};
   var mockCanvas = {};
   mockCanvas.getContext = function() {
@@ -62,11 +62,15 @@ test('Leinwand#setters', function(t) {
   l
     .font(1)
     .fillStyle(2)
-    .textAlign(3);
+    .textAlign(3)
+    .setTextBaseline('hello');
 
   t.equals(context.font, 1);
   t.equals(context.fillStyle, 2);
   t.equals(context.textAlign, 3);
+  t.equals(context.textBaseline, 'hello');
+  t.equals(l.textBaseline(), 'hello');
+  t.equals(l.getTextBaseline(), 'hello');
 
 });
 

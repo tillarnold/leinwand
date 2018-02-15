@@ -73,7 +73,9 @@ The following methods can be called exactly like the ones of `CanvasRenderingCon
 
 ## Setters
 If you want to set the `fillStyle` of your context you'd usually have to do something like this `ctx.fillStyle = 'red'`.
-To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This works works with all of these properites:
+To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This does the same as `l.setFillStyle('red')`.
+To read a property you can either use `l.getFillStyle()` or `l.fillStyle()`. 
+This works with all of these properites:
 
 - fillStyle
 - font
