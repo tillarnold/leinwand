@@ -111,6 +111,14 @@ Leinwand.prototype.circle = function cirlce(x, y, r) {
   return this.arc(x, y, r, 0, 2 * Math.PI, false);
 };
 
+Leinwand.prototype.strokeCircle = function strokeCircle(x, y, r) {
+  return this.beginPath().circle(x, y, r).closePath().stroke();
+};
+
+Leinwand.prototype.fillCircle = function fillCircle(x, y, r) {
+  return this.beginPath().circle(x, y, r).closePath().fill();
+};
+
 Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
   return this
     .translate(x, y)
@@ -133,6 +141,11 @@ Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
     .resetTransforms()
     .clear()
     .restore();
+};
+
+Leinwand.prototype.rectCenteredAt = function rectCenteredAt(x, y, w, h) {
+  return this
+    .rect(x - w / 2, y - h / 2, w, h);
 };
 
 Leinwand.prototype.fillRectCenteredAt = function fillRectCenteredAt(x, y, w, h) {

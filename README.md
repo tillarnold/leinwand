@@ -107,6 +107,12 @@ Clears the canvas. If you have applied any transforms to the context this may no
 ### l.circle(x, y, r)
 Draws a path in form of a circle at `x`/`y` with a radius of `r`.
 
+### l.strokeCircle(x, y, r)
+Strokes a circle at `x`/`y` with a radius of `r`.
+
+### l.fillCircle(x, y, r)
+Fills a circle at `x`/`y` with a radius of `r`.
+
 ### l.rotateContextAt(x, y, r)
 Rotates the context at `x`/`y` by `r` radians.
 
@@ -118,6 +124,9 @@ Resets all the transforms.
 
 ### l.clearWithTransforms()
 Clears the canvas event if there have been transforms applied. The tansforms are preserved.
+
+### l.rectCenteredAt(x, y, w, h)
+Draws a path of a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 
 ### l.fillRectCenteredAt(x, y, w, h)
 Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
