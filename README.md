@@ -158,6 +158,7 @@ Get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some 
 Get the underlying `HTMLCanvasElement`.
 
 ## Release History
+* 2018-02-16   v0.6.0   implement getters and add more utility functions
 * 2018-02-09   v0.5.0   add more utility functions
 * 2016-07-12   v0.4.0   add `drawImage` method
 * 2015-12-05   v0.3.0   add more utility functions
