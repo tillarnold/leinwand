@@ -29,7 +29,7 @@ l
   .fillStyle('blue')
   .circle(50, 50, 40)
   .fill()
-  .stroke()
+  .stroke();
 
 ```
 
@@ -71,9 +71,11 @@ The following methods can be called exactly like the ones of `CanvasRenderingCon
 ## Aliases
 `mt` is an alias for `moveTo`. `lt` is an alias for `lineTo`.
 
-## Setters
+## Setters/Getters
 If you want to set the `fillStyle` of your context you'd usually have to do something like this `ctx.fillStyle = 'red'`.
-To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This works works with all of these properites:
+To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This does the same as `l.setFillStyle('red')`.
+To read a property you can either use `l.getFillStyle()` or `l.fillStyle()`.
+This works with all of these properites:
 
 - fillStyle
 - font
@@ -88,6 +90,7 @@ To allow chaining your api calls in leinwand you do `l.fillStyle('red')`. This w
 - textAlign
 - textBaseline
 
+Additionally this also works with `width` and `height`. So you can do `l.setHeight(400)` (or `l.height(400)`) to change the height of the canvas element to 400.
 ## Passthrough methods
 There are methods on `CanvasRenderingContext2D` that do return something. So we can't chain on these methods. They behave exactly as if they were called on the context.
 
@@ -104,6 +107,12 @@ Clears the canvas. If you have applied any transforms to the context this may no
 ### l.circle(x, y, r)
 Draws a path in form of a circle at `x`/`y` with a radius of `r`.
 
+### l.strokeCircle(x, y, r)
+Strokes a circle at `x`/`y` with a radius of `r`.
+
+### l.fillCircle(x, y, r)
+Fills a circle at `x`/`y` with a radius of `r`.
+
 ### l.rotateContextAt(x, y, r)
 Rotates the context at `x`/`y` by `r` radians.
 
@@ -114,7 +123,10 @@ Resets the canvas.
 Resets all the transforms.
 
 ### l.clearWithTransforms()
-clears the canvas event if there have been transforms applied. The tansforms are preserved.
+Clears the canvas event if there have been transforms applied. The tansforms are preserved.
+
+### l.rectCenteredAt(x, y, w, h)
+Draws a path of a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 
 ### l.fillRectCenteredAt(x, y, w, h)
 Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
@@ -123,12 +135,12 @@ Fills a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 Strokes a rectangle centered at `x`/`y` with a widht of `w` and a hight of `h`.
 
 ### l.fillTextCenteredAt(text, x, y)
-Fills the thext `text` centered at `x`/`y`.
+Fills the the text `text` centered at `x`/`y`.
 
 ### l.strokeTextCenteredAt(text, x, y)
-Strokes the thext `text` centered at `x`/`y`.
+Strokes the the text `text` centered at `x`/`y`.
 
-### drawImageCenteredAt
+### l.drawImageCenteredAt(...)
 Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signatures.
 ```js
  l.drawCenteredAtImage(image, dx, dy);
@@ -145,13 +157,8 @@ Get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some 
 ### l.getCanvas()
 Get the underlying `HTMLCanvasElement`.
 
-### l.getWidht()
-Get the width of the canvas element.
-
-### l.getHeight()
-Get the height of the canvas element.
-
 ## Release History
+* 2018-02-16   v0.6.0   implement getters and add more utility functions
 * 2018-02-09   v0.5.0   add more utility functions
 * 2016-07-12   v0.4.0   add `drawImage` method
 * 2015-12-05   v0.3.0   add more utility functions

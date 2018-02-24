@@ -56,6 +56,11 @@ var passthroughNames = [
   'putImageData'
 ];
 
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 var Leinwand = function Leinwand(canvas) {
   if (!(this instanceof Leinwand)) {
     return new Leinwand(canvas);
@@ -74,6 +79,18 @@ methodNames.forEach(function(el) {
 
 setterNames.forEach(function(el) {
   Leinwand.prototype[el] = function(s) {
+    if (arguments.length === 0) {
+      return this._ctx[el];
+    }
+    this._ctx[el] = s;
+    return this;
+  };
+
+  Leinwand.prototype['get' + capitalizeFirstLetter(el)] = function() {
+    return this._ctx[el];
+  };
+
+  Leinwand.prototype['set' + capitalizeFirstLetter(el)] = function(s) {
     this._ctx[el] = s;
     return this;
   };
@@ -92,6 +109,14 @@ Leinwand.prototype.clear = function clear() {
 
 Leinwand.prototype.circle = function cirlce(x, y, r) {
   return this.arc(x, y, r, 0, 2 * Math.PI, false);
+};
+
+Leinwand.prototype.strokeCircle = function strokeCircle(x, y, r) {
+  return this.beginPath().circle(x, y, r).closePath().stroke();
+};
+
+Leinwand.prototype.fillCircle = function fillCircle(x, y, r) {
+  return this.beginPath().circle(x, y, r).closePath().fill();
 };
 
 Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
@@ -116,6 +141,11 @@ Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
     .resetTransforms()
     .clear()
     .restore();
+};
+
+Leinwand.prototype.rectCenteredAt = function rectCenteredAt(x, y, w, h) {
+  return this
+    .rect(x - w / 2, y - h / 2, w, h);
 };
 
 Leinwand.prototype.fillRectCenteredAt = function fillRectCenteredAt(x, y, w, h) {
@@ -178,7 +208,31 @@ Leinwand.prototype.getHeight = function getHeight() {
   return this._canvas.height;
 };
 
+Leinwand.prototype.setWidth = function setWidth(width) {
+  this._canvas.width = width;
+  return this;
+};
 
+Leinwand.prototype.setHeight = function setHeight(height) {
+  this._canvas.height = height;
+  return this;
+};
+
+Leinwand.prototype.width = function width(w) {
+  if (arguments.length === 0) {
+    return this._canvas.width;
+  }
+
+  return this.setWidth(w);
+};
+
+Leinwand.prototype.height = function height(h) {
+  if (arguments.length === 0) {
+    return this._canvas.height;
+  }
+
+  return this.setHeight(h);
+};
 //Aliases
 Leinwand.prototype.lt = Leinwand.prototype.lineTo;
 Leinwand.prototype.mt = Leinwand.prototype.moveTo;
