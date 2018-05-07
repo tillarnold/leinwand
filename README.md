@@ -149,7 +149,7 @@ Like `drawImage` on `CanvasRenderingContext2D` this method has 3 different signa
 ```
 
 This does what `drawImage` does except that the image is centered at `dy`/`dy`.
-For more infor on the parameters hava a look at the [mdn aritcle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) on `drawImage`.
+For more infos on the parameters hava a look at the [mdn aritcle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage) on `drawImage`.
 
 ### l.getContext()
 Get the `CanvasRenderingContext2D`. Just in cave leinwand does not provide some functionality.
