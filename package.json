@@ -11,7 +11,7 @@
     "test-beefy-live": "beefy test/beefy.js --cwd test -v --live",
     "coverage": "rm -rf coverage && istanbul cover test/test.js && istanbul report html && serve coverage",
     "format": "js-beautify -s=2 -r -f *.js test/*.js",
-    "check":"npm run format && npm run lint && npm run test"
+    "check": "npm run format && npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,12 @@
   "license": "MIT",
   "devDependencies": {
     "beefy": "^2.1.8",
-    "coveralls": "~3.0.0",
+    "coveralls": "^3.0.1",
     "istanbul": "~0.4.4",
     "js-beautify": "^1.6.3",
     "jshint": "^2.9.2",
     "serve": "^6.4.11",
     "tape": "^4.9.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.11.0"
   }
 }
