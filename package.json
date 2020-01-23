@@ -22,12 +22,12 @@
   "license": "MIT",
   "devDependencies": {
     "beefy": "^2.1.8",
-    "coveralls": "^3.0.1",
-    "istanbul": "~0.4.4",
-    "js-beautify": "^1.6.3",
-    "jshint": "^2.9.2",
-    "serve": "^11.0.1",
-    "tape": "^4.9.0",
-    "watchify": "^3.11.0"
+    "coveralls": "^3.0.9",
+    "istanbul": "~0.4.5",
+    "js-beautify": "^1.10.3",
+    "jshint": "^2.11.0",
+    "serve": "^11.3.0",
+    "tape": "^4.13.0",
+    "watchify": "^3.11.1"
   }
 }
