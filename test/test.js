@@ -1,7 +1,7 @@
 'use strict';
 var test = require('tape');
 
-var leinwand = require('..');
+var Leinwand = require('..');
 
 
 test('Leinwand#circle', function(t) {
@@ -21,7 +21,7 @@ test('Leinwand#circle', function(t) {
       };
     },
   };
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   l.circle(10, 50, 55);
 });
@@ -44,7 +44,7 @@ test('Leinwand#clear', function(t) {
     width: 999,
     height: 777
   };
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   l.clear();
 });
@@ -57,7 +57,7 @@ test('Leinwand#setters', function(t) {
     return context;
   };
 
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   l
     .font(1)
@@ -84,7 +84,7 @@ test('Leinwand#getters', function(t) {
   mockCanvas.height = 200;
   mockCanvas.width = 500;
 
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   t.equals(l.getCanvas(), mockCanvas);
   t.equals(l.getContext(), context);
@@ -118,7 +118,7 @@ test('Leinwand#methods', function(t) {
     return context;
   };
 
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   l
     .lt(1)
@@ -138,7 +138,7 @@ test('Leinwand#passthrough', function(t) {
     return context;
   };
 
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   t.equals(l.getImageData(2), 22);
 
@@ -160,7 +160,7 @@ test('Leinwand#Custom methods', function(t) {
     };
   };
 
-  var l = leinwand(mockCanvas);
+  var l = new Leinwand(mockCanvas);
 
   t.equals(l
     .resetCanvas()

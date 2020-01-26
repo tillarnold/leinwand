@@ -35,7 +35,7 @@ l
 
 ## Chaining methods
 
-The following methods can be called exactly like the ones of `CanvasRenderingContext2D` except that they return the `leinwand` object.
+The following methods can be called exactly like the ones of `CanvasRenderingContext2D` except that they return the `Leinwand` object.
 
 - arc
 - arcTo

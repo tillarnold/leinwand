@@ -1,6 +1,6 @@
 'use strict';
 
-var methodNames = [
+const methodNames = [
   'arc',
   'arcTo',
   'beginPath',
@@ -34,7 +34,7 @@ var methodNames = [
 ];
 
 
-var setterNames = [
+const setterNames = [
   'fillStyle',
   'font',
   'globalAlpha',
@@ -49,7 +49,7 @@ var setterNames = [
   'textBaseline'
 ];
 
-var passthroughNames = [
+const passthroughNames = [
   'getImageData',
   'getLineDash',
   'measureText',
@@ -61,23 +61,154 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-var Leinwand = function Leinwand(canvas) {
-  if (!(this instanceof Leinwand)) {
-    return new Leinwand(canvas);
+
+class Leinwand {
+  constructor(canvas) {
+    this._canvas = canvas;
+    this._ctx = canvas.getContext('2d');
   }
 
-  this._canvas = canvas;
-  this._ctx = canvas.getContext('2d');
-};
+  clear() {
+    return this.clearRect(0, 0, this._canvas.width, this._canvas.height);
+  }
 
-methodNames.forEach(function(el) {
-  Leinwand.prototype[el] = function() {
-    this._ctx[el].apply(this._ctx, arguments);
+  circle(x, y, r) {
+    return this.arc(x, y, r, 0, 2 * Math.PI, false);
+  }
+
+  strokeCircle(x, y, r) {
+    return this.beginPath().circle(x, y, r).closePath().stroke();
+  }
+
+  fillCircle(x, y, r) {
+    return this.beginPath().circle(x, y, r).closePath().fill();
+  }
+
+  rotateContextAt(x, y, r) {
+    return this
+      .translate(x, y)
+      .rotate(r)
+      .translate(-1 * x, -1 * y);
+  }
+
+  resetCanvas() {
+    this._canvas.width = this._canvas.width;
     return this;
-  };
-});
+  }
 
-setterNames.forEach(function(el) {
+  resetTransforms() {
+    return this.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  clearWithTransforms() {
+    return this
+      .save()
+      .resetTransforms()
+      .clear()
+      .restore();
+  }
+
+  rectCenteredAt(x, y, w, h) {
+    return this
+      .rect(x - w / 2, y - h / 2, w, h);
+  }
+
+  fillRectCenteredAt(x, y, w, h) {
+    return this
+      .fillRect(x - w / 2, y - h / 2, w, h);
+  }
+
+  strokeRectCenteredAt(x, y, w, h) {
+    return this
+      .strokeRect(x - w / 2, y - h / 2, w, h);
+  }
+
+  fillTextCenteredAt(text, x, y) {
+    return this
+      .save()
+      .textBaseline('middle')
+      .textAlign('center')
+      .fillText(text, x, y)
+      .restore();
+  }
+
+  strokeTextCenteredAt(text, x, y) {
+    return this
+      .save()
+      .textBaseline('middle')
+      .textAlign('center')
+      .strokeText(text, x, y)
+      .resore();
+  }
+
+  drawImageCenteredAt(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) {
+    let args = arguments.length;
+    if (args === 3) {
+      this.drawImage(image, sx - image.width / 2, sy - image.height / 2);
+    } else if (args === 5) {
+      this.drawImage(image, sx - sWidth / 2, sy - sHeight / 2, sWidth, sHeight);
+    } else if (args === 9) {
+      this.drawImage(image, sx, sy, sWidth, sHeight, dx - dWidth / 2, dy - dHeight / 2, dWidth, dHeight);
+    } else {
+      throw new TypeError(arguments.length + ' is not a valid number of arguments to Leinwand.drawImageCenteredAt');
+    }
+
+    return this;
+  }
+
+  //Getters
+  getContext() {
+    return this._ctx;
+  }
+
+  getCanvas() {
+    return this._canvas;
+  }
+
+  getWidth() {
+    return this._canvas.width;
+  }
+
+  getHeight() {
+    return this._canvas.height;
+  }
+
+  setWidth(width) {
+    this._canvas.width = width;
+    return this;
+  }
+
+  setHeight(height) {
+    this._canvas.height = height;
+    return this;
+  }
+
+  width(w) {
+    if (arguments.length === 0) {
+      return this._canvas.width;
+    }
+
+    return this.setWidth(w);
+  }
+
+  height(h) {
+    if (arguments.length === 0) {
+      return this._canvas.height;
+    }
+
+    return this.setHeight(h);
+  }
+}
+
+
+methodNames.forEach(el =>
+  Leinwand.prototype[el] = function(...args) {
+    this._ctx[el](...args);
+    return this;
+  }
+);
+
+setterNames.forEach(el => {
   Leinwand.prototype[el] = function(s) {
     if (arguments.length === 0) {
       return this._ctx[el];
@@ -96,143 +227,12 @@ setterNames.forEach(function(el) {
   };
 });
 
-passthroughNames.forEach(function(el) {
-  Leinwand.prototype[el] = function() {
-    return this._ctx[el].apply(this._ctx, arguments);
+passthroughNames.forEach(el => {
+  Leinwand.prototype[el] = function(...args) {
+    return this._ctx[el](...args);
   };
 });
 
-//Custom methods
-Leinwand.prototype.clear = function clear() {
-  return this.clearRect(0, 0, this._canvas.width, this._canvas.height);
-};
-
-Leinwand.prototype.circle = function cirlce(x, y, r) {
-  return this.arc(x, y, r, 0, 2 * Math.PI, false);
-};
-
-Leinwand.prototype.strokeCircle = function strokeCircle(x, y, r) {
-  return this.beginPath().circle(x, y, r).closePath().stroke();
-};
-
-Leinwand.prototype.fillCircle = function fillCircle(x, y, r) {
-  return this.beginPath().circle(x, y, r).closePath().fill();
-};
-
-Leinwand.prototype.rotateContextAt = function rotateContextAt(x, y, r) {
-  return this
-    .translate(x, y)
-    .rotate(r)
-    .translate(-1 * x, -1 * y);
-};
-
-Leinwand.prototype.resetCanvas = function resetCanvas() {
-  this._canvas.width = this._canvas.width;
-  return this;
-};
-
-Leinwand.prototype.resetTransforms = function resetTransforms() {
-  return this.setTransform(1, 0, 0, 1, 0, 0);
-};
-
-Leinwand.prototype.clearWithTransforms = function clearWithTransforms() {
-  return this
-    .save()
-    .resetTransforms()
-    .clear()
-    .restore();
-};
-
-Leinwand.prototype.rectCenteredAt = function rectCenteredAt(x, y, w, h) {
-  return this
-    .rect(x - w / 2, y - h / 2, w, h);
-};
-
-Leinwand.prototype.fillRectCenteredAt = function fillRectCenteredAt(x, y, w, h) {
-  return this
-    .fillRect(x - w / 2, y - h / 2, w, h);
-};
-
-Leinwand.prototype.strokeRectCenteredAt = function strokeRectCenteredAt(x, y, w, h) {
-  return this
-    .strokeRect(x - w / 2, y - h / 2, w, h);
-};
-
-Leinwand.prototype.fillTextCenteredAt = function fillTextCenteredAt(text, x, y) {
-  return this
-    .save()
-    .textBaseline('middle')
-    .textAlign('center')
-    .fillText(text, x, y)
-    .restore();
-};
-
-Leinwand.prototype.strokeTextCenteredAt = function strokeTextCenteredAt(text, x, y) {
-  return this
-    .save()
-    .textBaseline('middle')
-    .textAlign('center')
-    .strokeText(text, x, y)
-    .resore();
-};
-
-Leinwand.prototype.drawImageCenteredAt = function drawImageCenteredAt(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) {
-  var args = arguments.length;
-  if (args === 3) {
-    this.drawImage(image, sx - image.width / 2, sy - image.height / 2);
-  } else if (args === 5) {
-    this.drawImage(image, sx - sWidth / 2, sy - sHeight / 2, sWidth, sHeight);
-  } else if (args === 9) {
-    this.drawImage(image, sx, sy, sWidth, sHeight, dx - dWidth / 2, dy - dHeight / 2, dWidth, dHeight);
-  } else {
-    throw new TypeError(arguments.length + ' is not a valid number of arguments to Leinwand.drawImageCenteredAt');
-  }
-
-  return this;
-};
-
-//Getters
-Leinwand.prototype.getContext = function getContext() {
-  return this._ctx;
-};
-
-Leinwand.prototype.getCanvas = function getCanvas() {
-  return this._canvas;
-};
-
-Leinwand.prototype.getWidth = function getWidth() {
-  return this._canvas.width;
-};
-
-Leinwand.prototype.getHeight = function getHeight() {
-  return this._canvas.height;
-};
-
-Leinwand.prototype.setWidth = function setWidth(width) {
-  this._canvas.width = width;
-  return this;
-};
-
-Leinwand.prototype.setHeight = function setHeight(height) {
-  this._canvas.height = height;
-  return this;
-};
-
-Leinwand.prototype.width = function width(w) {
-  if (arguments.length === 0) {
-    return this._canvas.width;
-  }
-
-  return this.setWidth(w);
-};
-
-Leinwand.prototype.height = function height(h) {
-  if (arguments.length === 0) {
-    return this._canvas.height;
-  }
-
-  return this.setHeight(h);
-};
 //Aliases
 Leinwand.prototype.lt = Leinwand.prototype.lineTo;
 Leinwand.prototype.mt = Leinwand.prototype.moveTo;

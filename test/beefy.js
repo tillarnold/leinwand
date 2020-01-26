@@ -7,6 +7,7 @@ canvas.style.outline = '1px solid black';
 document.body.appendChild(canvas);
 
 
+window.Leinwand = Leinwand;
 var l = new Leinwand(canvas);
 
 window.l = l;
