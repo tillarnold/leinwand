@@ -138,7 +138,7 @@ class Leinwand {
       .textBaseline('middle')
       .textAlign('center')
       .strokeText(text, x, y)
-      .resore();
+      .restore();
   }
 
   drawImageCenteredAt(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) {
